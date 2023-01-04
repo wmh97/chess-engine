@@ -4,7 +4,8 @@ CPPFLAGS = -Wall \
 		   -g \
 		   -std=c++2a
 
-SOURCES = main.cpp
+SOURCES = main.cpp \
+          HtmlTagBuilder.cpp
 
 OBJECTS := $(patsubst %.cpp, build/%.o, $(SOURCES))
 
