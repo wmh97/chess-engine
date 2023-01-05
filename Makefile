@@ -5,7 +5,8 @@ CPPFLAGS = -Wall \
 		   -std=c++2a
 
 SOURCES = main.cpp \
-          HtmlTagBuilder.cpp
+          HtmlTagBuilder.cpp \
+		  ChessBoardHtmlBuilder.cpp
 
 OBJECTS := $(patsubst %.cpp, build/%.o, $(SOURCES))
 
