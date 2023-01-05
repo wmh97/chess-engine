@@ -5,25 +5,26 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 class ChessBoardBuilder
 {
 public:
     ChessBoardBuilder() = default;
 
-    void setBlackRook(int position1, int position2);
-    void setBlackKnight(int position1, int position2);
-    void setBlackBishop(int position1, int position2);
+    void setBlackRook(int position);
+    void setBlackKnight(int position);
+    void setBlackBishop(int position);
     void setBlackKing(int position);
     void setBlackQueen(int position);
-    void setBlackPawn(int position1, int position2, int position3, int position4, int position5, int position6, int position7, int position8);
+    void setBlackPawn(int position);
 
-    void setWhiteRook(int position1, int position2);
-    void setWhiteKnight(int position1, int position2);
-    void setWhiteBishop(int position1, int position2);
+    void setWhiteRook(int position);
+    void setWhiteKnight(int position);
+    void setWhiteBishop(int position);
     void setWhiteKing(int position);
     void setWhiteQueen(int position);
-    void setWhitePawn(int position1, int position2, int position3, int position4, int position5, int position6, int position7, int position8);
+    void setWhitePawn(int position);
 
     void createBoard();
     void outputBoard();

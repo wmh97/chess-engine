@@ -3,22 +3,19 @@
 #include <numeric>
 #include <fstream>
 
-void ChessBoardBuilder::setBlackRook(int position1, int position2)
+void ChessBoardBuilder::setBlackRook(int position)
 {
-    _board_map[position1] = "♜";
-    _board_map[position2] = "♜";
+    _board_map[position] = "♜";
 }
 
-void ChessBoardBuilder::setBlackKnight(int position1, int position2)
+void ChessBoardBuilder::setBlackKnight(int position)
 {
-    _board_map[position1] = "♞";
-    _board_map[position2] = "♞";   
+    _board_map[position] = "♞";
 }
 
-void ChessBoardBuilder::setBlackBishop(int position1, int position2)
+void ChessBoardBuilder::setBlackBishop(int position)
 {
-    _board_map[position1] = "♝";
-    _board_map[position2] = "♝";  
+    _board_map[position] = "♝";
 }
 
 void ChessBoardBuilder::setBlackKing(int position)
@@ -31,41 +28,24 @@ void ChessBoardBuilder::setBlackQueen(int position)
     _board_map[position] = "♚";  
 }
 
-void ChessBoardBuilder::setBlackPawn(int position1,
-                                                 int position2,
-                                                 int position3,
-                                                 int position4,
-                                                 int position5,
-                                                 int position6,
-                                                 int position7,
-                                                 int position8)
+void ChessBoardBuilder::setBlackPawn(int position)
 {
-    _board_map[position1] = "♟";
-    _board_map[position2] = "♟"; 
-    _board_map[position3] = "♟";
-    _board_map[position4] = "♟"; 
-    _board_map[position5] = "♟";
-    _board_map[position6] = "♟"; 
-    _board_map[position7] = "♟";
-    _board_map[position8] = "♟"; 
+    _board_map[position] = "♟";
 }
 
-void ChessBoardBuilder::setWhiteRook(int position1, int position2)
+void ChessBoardBuilder::setWhiteRook(int position)
 {
-    _board_map[position1] = "♖";
-    _board_map[position2] = "♖";
+    _board_map[position] = "♖";
 }
 
-void ChessBoardBuilder::setWhiteKnight(int position1, int position2)
+void ChessBoardBuilder::setWhiteKnight(int position)
 {
-    _board_map[position1] = "♘";
-    _board_map[position2] = "♘";
+    _board_map[position] = "♘";
 }
 
-void ChessBoardBuilder::setWhiteBishop(int position1, int position2)
+void ChessBoardBuilder::setWhiteBishop(int position)
 {
-    _board_map[position1] = "♗";
-    _board_map[position2] = "♗";
+    _board_map[position] = "♗";
 }
 
 void ChessBoardBuilder::setWhiteKing(int position)
@@ -78,23 +58,9 @@ void ChessBoardBuilder::setWhiteQueen(int position)
     _board_map[position] = "♕"; 
 }
 
-void ChessBoardBuilder::setWhitePawn(int position1,
-                                                 int position2,
-                                                 int position3,
-                                                 int position4,
-                                                 int position5,
-                                                 int position6,
-                                                 int position7,
-                                                 int position8)
+void ChessBoardBuilder::setWhitePawn(int position)
 {
-    _board_map[position1] = "♙";
-    _board_map[position2] = "♙"; 
-    _board_map[position3] = "♙";
-    _board_map[position4] = "♙"; 
-    _board_map[position5] = "♙";
-    _board_map[position6] = "♙"; 
-    _board_map[position7] = "♙";
-    _board_map[position8] = "♙"; 
+    _board_map[position] = "♙";
 }
 
 std::unique_ptr<HtmlTagBuilder> ChessBoardBuilder::buildRow(int row_number)

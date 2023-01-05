@@ -258,21 +258,51 @@ int main()
 
     ChessBoardBuilder boardBldr {};
 
-    boardBldr.setBlackRook(1, 8);
-    boardBldr.setBlackKnight(2, 7);
-    boardBldr.setBlackBishop(3, 6);
+    boardBldr.setBlackRook(1);
+    boardBldr.setBlackRook(8);
+
+    boardBldr.setBlackKnight(2);
+    boardBldr.setBlackKnight(7);
+
+    boardBldr.setBlackBishop(3);
+    boardBldr.setBlackBishop(6);
+
     boardBldr.setBlackKing(4);
     boardBldr.setBlackQueen(5);
-    boardBldr.setBlackPawn(9, 10, 11, 12, 13, 14, 15, 16);
 
-    boardBldr.setWhiteRook(57, 64);
-    boardBldr.setWhiteKnight(58, 63);
-    boardBldr.setWhiteBishop(59, 62);
+    boardBldr.setBlackPawn(9);
+    boardBldr.setBlackPawn(10);
+    boardBldr.setBlackPawn(11);
+    boardBldr.setBlackPawn(12);
+    boardBldr.setBlackPawn(13);
+    boardBldr.setBlackPawn(14);
+    boardBldr.setBlackPawn(15);
+    boardBldr.setBlackPawn(16);
+
+    boardBldr.setWhiteRook(57);
+    boardBldr.setWhiteRook(64);
+
+    boardBldr.setWhiteKnight(58);
+    boardBldr.setWhiteKnight(63);
+
+    boardBldr.setWhiteBishop(59);
+    boardBldr.setWhiteBishop(62);
+
     boardBldr.setWhiteQueen(60);
+
     boardBldr.setWhiteKing(61);
-    boardBldr.setWhitePawn(49, 50, 51, 52, 53, 54, 55, 56);
+
+    boardBldr.setWhitePawn(49);
+    boardBldr.setWhitePawn(50);
+    boardBldr.setWhitePawn(51);
+    boardBldr.setWhitePawn(52);
+    boardBldr.setWhitePawn(53);
+    boardBldr.setWhitePawn(54);
+    boardBldr.setWhitePawn(55);
+    boardBldr.setWhitePawn(56);
 
     boardBldr.createBoard();
+    
     boardBldr.outputBoard();
 
     std::cout << "Finished!";
