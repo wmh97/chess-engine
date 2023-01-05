@@ -32,9 +32,9 @@ void HtmlTagBuilder::addMetaData(std::string key, std::string value)
     _write_pos += data.size();
 }
 
-void HtmlTagBuilder::addEmbeddedTag(IHtmlTagBuilder* tag)
+void HtmlTagBuilder::addEmbeddedTag(std::unique_ptr<IHtmlTagBuilder> tag)
 {
-    _components.push_back(tag);
+    _components.push_back(std::move(tag));
 }
 
 std::string HtmlTagBuilder::buildTag()

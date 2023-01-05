@@ -2,6 +2,7 @@
 #define HTML_BUILDER_INTERFACES_H
 
 #include <string>
+#include <memory>
 
 enum class TagType
 {
@@ -17,7 +18,7 @@ public:
     virtual void setClassTag(std::string tag_type, std::string class_name) = 0;
     virtual void addTagContents(std::string tag_contents) = 0;
     virtual void addMetaData(std::string key, std::string value) = 0;
-    virtual void addEmbeddedTag(IHtmlTagBuilder* tag) = 0;
+    virtual void addEmbeddedTag(std::unique_ptr<IHtmlTagBuilder> tag) = 0;
     virtual std::string buildTag() = 0;
 };
 

@@ -2,7 +2,7 @@
 #include <vector>
 #include <map>
 
-#include "ChessBoardHtmlBuilder.h"
+#include "ChessBoardBuilder.h"
 
 namespace PieceMoves
 {
@@ -256,7 +256,7 @@ int main()
         legal_moves[i][PieceMoves::MoveDirections::white_pawn] = PieceMoves::calculateWhitePawnLegalMoves(i);
     }
 
-    ChessBoardHtmlBuilder boardBldr {};
+    ChessBoardBuilder boardBldr {};
 
     boardBldr.setBlackRook(1, 8);
     boardBldr.setBlackKnight(2, 7);
@@ -273,7 +273,7 @@ int main()
     boardBldr.setWhitePawn(49, 50, 51, 52, 53, 54, 55, 56);
 
     boardBldr.createBoard();
-    boardBldr.printBoard();
+    boardBldr.outputBoard();
 
     std::cout << "Finished!";
     return 0;
