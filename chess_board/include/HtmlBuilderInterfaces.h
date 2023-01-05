@@ -4,12 +4,6 @@
 #include <string>
 #include <memory>
 
-enum class TagType
-{
-    meta,
-    class_tag
-};
-
 class IHtmlTagBuilder
 {
 public:
