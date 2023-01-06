@@ -21,10 +21,50 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
     {
         case(PieceType::rook):
         {
-            auto blackRook {std::make_shared<Rook>(container, colour, position)};
-            _all_pieces.push_back(blackRook);
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
             notifyOfPieceAdded();
-            return blackRook;
+            return piece;
+            break;
+        }
+        case(PieceType::knight):
+        {
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
+            notifyOfPieceAdded();
+            return piece;
+            break;
+        }
+        case(PieceType::bishop):
+        {
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
+            notifyOfPieceAdded();
+            return piece;
+            break;
+        }
+        case(PieceType::king):
+        {
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
+            notifyOfPieceAdded();
+            return piece;
+            break;
+        }
+        case(PieceType::queen):
+        {
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
+            notifyOfPieceAdded();
+            return piece;
+            break;
+        }
+        case(PieceType::pawn):
+        {
+            auto piece {std::make_shared<Rook>(container, colour, position)};
+            _all_pieces.push_back(piece);
+            notifyOfPieceAdded();
+            return piece;
             break;
         }
     }

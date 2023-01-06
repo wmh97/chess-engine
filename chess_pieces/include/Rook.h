@@ -17,10 +17,11 @@ public:
     IPieceFactory::PieceType type() const override;
     IPieceFactory::PieceColour colour() const override;
 private:
+    std::shared_ptr<PiecesContainer> _container;
+    
     const IPieceFactory::PieceType _type {IPieceFactory::PieceType::rook};
     IPieceFactory::PieceColour _colour;
     
-    std::shared_ptr<PiecesContainer> _container;
     int _position;
     std::vector<int> _legal_moves;
 
