@@ -2,6 +2,7 @@
 #define CHESS_BOARD_BUILDER_H
 
 #include "HtmlTagBuilder.h"
+#include "PieceInterfaces.h"
 
 #include <map>
 #include <string>
@@ -12,7 +13,7 @@ class ChessBoardBuilder
 public:
     ChessBoardBuilder() = default;
 
-    void setBlackRook(int position);
+    void setBlackRook(IPiece* rook);
     void setBlackKnight(int position);
     void setBlackBishop(int position);
     void setBlackKing(int position);

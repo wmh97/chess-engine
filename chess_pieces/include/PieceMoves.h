@@ -2,6 +2,7 @@
 #define PIECE_MOVES_H
 
 #include <vector>
+#include <map>
 
 namespace PieceMoves
 {
@@ -43,6 +44,13 @@ namespace PieceMoves
     extern std::vector<int> calculateBlackPawnLegalMoves(int position) noexcept;
 
     extern std::vector<int> calculateWhitePawnLegalMoves(int position) noexcept;
+
+    // refactor into class
+    struct LegalMovesMap
+    {
+        LegalMovesMap(std::map<int, std::map<PieceMoves::MoveDirections, std::vector<int>>> legal_moves) : legal_moves{legal_moves} {}
+        std::map<int, std::map<PieceMoves::MoveDirections, std::vector<int>>> legal_moves {};
+    };
 }
 
 #endif

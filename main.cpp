@@ -1,4 +1,5 @@
 #include "PieceMoves.h"
+#include "PiecesContainer.h"
 #include "ChessBoardBuilder.h"
 
 #include <iostream>
@@ -26,50 +27,58 @@ int main()
         legal_moves[i][PieceMoves::MoveDirections::white_pawn] = PieceMoves::calculateWhitePawnLegalMoves(i);
     }
 
+    auto legalMoves {std::make_unique<PieceMoves::LegalMovesMap>(legal_moves)};
+    auto piecesContainer = std::make_shared<PiecesContainer>(std::move(legalMoves));
+
+    auto blackRook = piecesContainer->makePiece(PiecesContainer::PieceType::black_rook, piecesContainer, 30);
+    auto otherPiece = piecesContainer->makePiece(PiecesContainer::PieceType::black_rook, piecesContainer, 54);
+
     ChessBoardBuilder boardBldr {};
 
-    boardBldr.setBlackRook(1);
-    boardBldr.setBlackRook(8);
+    boardBldr.setBlackRook(blackRook.get());
+    boardBldr.setBlackPawn(54);
 
-    boardBldr.setBlackKnight(2);
-    boardBldr.setBlackKnight(7);
+    // boardBldr.setBlackRook(8);
 
-    boardBldr.setBlackBishop(3);
-    boardBldr.setBlackBishop(6);
+    // boardBldr.setBlackKnight(2);
+    // boardBldr.setBlackKnight(7);
 
-    boardBldr.setBlackKing(4);
-    boardBldr.setBlackQueen(5);
+    // boardBldr.setBlackBishop(3);
+    // boardBldr.setBlackBishop(6);
 
-    boardBldr.setBlackPawn(9);
-    boardBldr.setBlackPawn(10);
-    boardBldr.setBlackPawn(11);
-    boardBldr.setBlackPawn(12);
-    boardBldr.setBlackPawn(13);
-    boardBldr.setBlackPawn(14);
-    boardBldr.setBlackPawn(15);
-    boardBldr.setBlackPawn(16);
+    // boardBldr.setBlackKing(4);
+    // boardBldr.setBlackQueen(5);
 
-    boardBldr.setWhiteRook(57);
-    boardBldr.setWhiteRook(64);
+    // boardBldr.setBlackPawn(9);
+    // boardBldr.setBlackPawn(10);
+    // boardBldr.setBlackPawn(11);
+    // boardBldr.setBlackPawn(12);
+    // boardBldr.setBlackPawn(13);
+    // boardBldr.setBlackPawn(14);
+    // boardBldr.setBlackPawn(15);
+    // boardBldr.setBlackPawn(16);
 
-    boardBldr.setWhiteKnight(58);
-    boardBldr.setWhiteKnight(63);
+    // boardBldr.setWhiteRook(57);
+    // boardBldr.setWhiteRook(64);
 
-    boardBldr.setWhiteBishop(59);
-    boardBldr.setWhiteBishop(62);
+    // boardBldr.setWhiteKnight(58);
+    // boardBldr.setWhiteKnight(63);
 
-    boardBldr.setWhiteQueen(60);
+    // boardBldr.setWhiteBishop(59);
+    // boardBldr.setWhiteBishop(62);
 
-    boardBldr.setWhiteKing(61);
+    // boardBldr.setWhiteQueen(60);
 
-    boardBldr.setWhitePawn(49);
-    boardBldr.setWhitePawn(50);
-    boardBldr.setWhitePawn(51);
-    boardBldr.setWhitePawn(52);
-    boardBldr.setWhitePawn(53);
-    boardBldr.setWhitePawn(54);
-    boardBldr.setWhitePawn(55);
-    boardBldr.setWhitePawn(56);
+    // boardBldr.setWhiteKing(61);
+
+    // boardBldr.setWhitePawn(49);
+    // boardBldr.setWhitePawn(50);
+    // boardBldr.setWhitePawn(51);
+    // boardBldr.setWhitePawn(52);
+    // boardBldr.setWhitePawn(53);
+    // boardBldr.setWhitePawn(54);
+    // boardBldr.setWhitePawn(55);
+    // boardBldr.setWhitePawn(56);
 
     boardBldr.createBoard();
     

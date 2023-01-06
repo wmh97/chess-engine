@@ -3,9 +3,13 @@
 #include <numeric>
 #include <fstream>
 
-void ChessBoardBuilder::setBlackRook(int position)
+void ChessBoardBuilder::setBlackRook(IPiece* rook)
 {
-    _board_map[position] = "♜";
+    _board_map[rook->position()] = "♜";
+    for (const int legal : rook->legalMoves())
+    {
+        _board_map[legal] = "O";
+    }
 }
 
 void ChessBoardBuilder::setBlackKnight(int position)
