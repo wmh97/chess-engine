@@ -2,8 +2,9 @@
 
 #include <iostream>
 
-Rook::Rook(std::shared_ptr<PiecesContainer> pieces_container, int position) :
+Rook::Rook(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position) :
     _container{pieces_container},
+    _colour{colour},
     _position{position}
 {
     calculateLegalMoves();
@@ -30,12 +31,13 @@ std::size_t Rook::checkForBlockingPieces(std::size_t start_index)
 {
     for (std::size_t i {start_index}; i<_legal_moves.size(); i++)
     {
-        std::cout << "Checking for blocking piece at " << _legal_moves[i] << "\n";
-        if (_legal_moves[i] == _position)
+        for (const auto& piece : _container->allPieces())
         {
-            _legal_moves.resize(i);
-            std::cout << "Blocking piece at: " << _legal_moves[i] << "\n";
-            return i;
+            if (_legal_moves[i] == piece->position())
+            {
+                _legal_moves.resize(i);
+                return i;
+            }
         }
     }
     return _legal_moves.size();
@@ -74,4 +76,14 @@ void Rook::calculateLegalMoves()
         std::end(_container->legalMoves()->legal_moves[_position][PieceMoves::MoveDirections::right])
     );
     start = checkForBlockingPieces(start);
+}
+
+IPieceFactory::PieceType Rook::type() const
+{
+    return _type;
+}
+
+IPieceFactory::PieceColour Rook::colour() const
+{
+    return _colour;
 }

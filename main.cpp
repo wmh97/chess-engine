@@ -30,13 +30,13 @@ int main()
     auto legalMoves {std::make_unique<PieceMoves::LegalMovesMap>(legal_moves)};
     auto piecesContainer = std::make_shared<PiecesContainer>(std::move(legalMoves));
 
-    auto blackRook = piecesContainer->makePiece(PiecesContainer::PieceType::black_rook, piecesContainer, 30);
-    auto otherPiece = piecesContainer->makePiece(PiecesContainer::PieceType::black_rook, piecesContainer, 54);
+    auto blackRook = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::black, 30);
+    auto otherPiece = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::black, 54);
 
     ChessBoardBuilder boardBldr {};
 
-    boardBldr.setBlackRook(blackRook.get());
-    boardBldr.setBlackPawn(54);
+    boardBldr.setPiece(blackRook.get());
+    boardBldr.setPiece(otherPiece.get(), true);
 
     // boardBldr.setBlackRook(8);
 

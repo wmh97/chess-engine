@@ -13,19 +13,21 @@ class ChessBoardBuilder
 public:
     ChessBoardBuilder() = default;
 
-    void setBlackRook(IPiece* rook);
-    void setBlackKnight(int position);
-    void setBlackBishop(int position);
-    void setBlackKing(int position);
-    void setBlackQueen(int position);
-    void setBlackPawn(int position);
+    void setPiece(IPiece* piece, bool show_legal_moves=false);
 
-    void setWhiteRook(int position);
-    void setWhiteKnight(int position);
-    void setWhiteBishop(int position);
-    void setWhiteKing(int position);
-    void setWhiteQueen(int position);
-    void setWhitePawn(int position);
+    // void setBlackRook(IPiece* rook);
+    // void setBlackKnight(int position);
+    // void setBlackBishop(int position);
+    // void setBlackKing(int position);
+    // void setBlackQueen(int position);
+    // void setBlackPawn(int position);
+
+    // void setWhiteRook(int position);
+    // void setWhiteKnight(int position);
+    // void setWhiteBishop(int position);
+    // void setWhiteKing(int position);
+    // void setWhiteQueen(int position);
+    // void setWhitePawn(int position);
 
     void createBoard();
     void outputBoard();

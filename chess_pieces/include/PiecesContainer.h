@@ -12,7 +12,7 @@ class PiecesContainer : public IPieceFactory
 public:
     PiecesContainer(std::unique_ptr<PieceMoves::LegalMovesMap> legal_moves);
 
-    std::shared_ptr<IPiece> makePiece(IPieceFactory::PieceType piece_type, std::shared_ptr<PiecesContainer> container, int position);
+    std::shared_ptr<IPiece> makePiece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType piece_type, IPieceFactory::PieceColour colour, int position);
 
     std::vector<std::shared_ptr<IPiece>> allPieces() const;
     PieceMoves::LegalMovesMap* legalMoves() const;
