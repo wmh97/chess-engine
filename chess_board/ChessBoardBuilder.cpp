@@ -3,64 +3,93 @@
 #include <numeric>
 #include <fstream>
 
-void ChessBoardBuilder::setBlackRook(int position)
+void ChessBoardBuilder::setPiece(IPiece* piece, bool show_legal_moves)
 {
-    _board_map[position] = "♜";
-}
+    switch(piece->type())
+    {
+        case(IPieceFactory::PieceType::rook):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♜";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♖";
+            }
+            break;
+        }
+        case(IPieceFactory::PieceType::knight):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♞";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♘";
+            }
+            break;
+        }
+        case(IPieceFactory::PieceType::bishop):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♝";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♗";
+            }
+            break;
+        }
+        case(IPieceFactory::PieceType::king):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♚";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♔";
+            }
+            break;
+        }
+        case(IPieceFactory::PieceType::queen):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♛";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♕";
+            }
+            break;
+        }
+        case(IPieceFactory::PieceType::pawn):
+        {
+            if (piece->colour() == IPieceFactory::PieceColour::black)
+            {
+                _board_map[piece->position()] = "♟";
+            }
+            else if (piece->colour() == IPieceFactory::PieceColour::white)
+            {
+                _board_map[piece->position()] = "♙";
+            }
+            break;
+        }
+        default:
+            break;
+    }
 
-void ChessBoardBuilder::setBlackKnight(int position)
-{
-    _board_map[position] = "♞";
-}
-
-void ChessBoardBuilder::setBlackBishop(int position)
-{
-    _board_map[position] = "♝";
-}
-
-void ChessBoardBuilder::setBlackKing(int position)
-{
-    _board_map[position] = "♛";  
-}
-
-void ChessBoardBuilder::setBlackQueen(int position)
-{
-    _board_map[position] = "♚";  
-}
-
-void ChessBoardBuilder::setBlackPawn(int position)
-{
-    _board_map[position] = "♟";
-}
-
-void ChessBoardBuilder::setWhiteRook(int position)
-{
-    _board_map[position] = "♖";
-}
-
-void ChessBoardBuilder::setWhiteKnight(int position)
-{
-    _board_map[position] = "♘";
-}
-
-void ChessBoardBuilder::setWhiteBishop(int position)
-{
-    _board_map[position] = "♗";
-}
-
-void ChessBoardBuilder::setWhiteKing(int position)
-{
-    _board_map[position] = "♔"; 
-}
-
-void ChessBoardBuilder::setWhiteQueen(int position)
-{
-    _board_map[position] = "♕"; 
-}
-
-void ChessBoardBuilder::setWhitePawn(int position)
-{
-    _board_map[position] = "♙";
+    if (show_legal_moves)
+    {
+        for (const int legal : piece->legalMoves())
+        {
+            _board_map[legal] = "O";
+        }
+    }
 }
 
 std::unique_ptr<HtmlTagBuilder> ChessBoardBuilder::buildRow(int row_number)
