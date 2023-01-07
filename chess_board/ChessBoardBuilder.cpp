@@ -107,26 +107,26 @@ std::string ChessBoardBuilder::getSquareColour(int row_number, int position) con
     {
         if (position % 2 == 0)
         {
-            if (pos_is_legal_move) return "legal_moves_light";
-            return "light";
+            if (pos_is_legal_move) return "legal_moves_dark";
+            return "dark";
         }
         else
         {
-            if (pos_is_legal_move) return "legal_moves_dark";
-            return "dark";
+            if (pos_is_legal_move) return "legal_moves_light";
+            return "light";
         }
     }
     else
     {
         if (position % 2 == 0)
         {
-            if (pos_is_legal_move) return "legal_moves_dark";
-            return "dark";
+            if (pos_is_legal_move) return "legal_moves_light";
+            return "light";
         }
         else
         {
-            if (pos_is_legal_move) return "legal_moves_light";
-            return "light";
+            if (pos_is_legal_move) return "legal_moves_dark";
+            return "dark";
         }
     }
     return "";
