@@ -34,10 +34,11 @@ public:
     virtual ~IPiece() = default;
     virtual void move(int position) = 0;
     virtual int position() const = 0;
-    virtual void calculateLegalMoves() = 0;
-    virtual std::vector<int> legalMoves() const = 0;
     virtual IPieceFactory::PieceType type() const = 0;
     virtual IPieceFactory::PieceColour colour() const = 0;
+    
+    virtual void update() = 0;
+    virtual std::vector<int> legalMoves() const = 0;
 };
 
 #endif
