@@ -1,5 +1,6 @@
 #include "ChessBoardBuilder.h"
 
+#include <algorithm>
 #include <numeric>
 #include <fstream>
 
@@ -85,11 +86,50 @@ void ChessBoardBuilder::setPiece(IPiece* piece, bool show_legal_moves)
 
     if (show_legal_moves)
     {
-        for (const int legal : piece->legalMoves())
+        const auto legal_moves {piece->legalMoves()};
+        _legal_moves.insert(std::end(_legal_moves), std::begin(legal_moves), std::end(legal_moves));
+    }
+}
+
+std::string ChessBoardBuilder::getSquareColour(int row_number, int position) const
+{
+    // could be made more concise so that we dont need to pass row number and pos.
+    
+    std::string colour {};
+    bool pos_is_legal_move {false};
+
+    if (std::find(_legal_moves.begin(), _legal_moves.end(), position) != _legal_moves.end())
+    {
+        pos_is_legal_move = true;
+    }
+
+    if (row_number % 2 == 0) // even rows
+    {
+        if (position % 2 == 0)
         {
-            _board_map[legal] = "O";
+            if (pos_is_legal_move) return "legal_moves_light";
+            return "light";
+        }
+        else
+        {
+            if (pos_is_legal_move) return "legal_moves_dark";
+            return "dark";
         }
     }
+    else
+    {
+        if (position % 2 == 0)
+        {
+            if (pos_is_legal_move) return "legal_moves_dark";
+            return "dark";
+        }
+        else
+        {
+            if (pos_is_legal_move) return "legal_moves_light";
+            return "light";
+        }
+    }
+    return "";
 }
 
 std::unique_ptr<HtmlTagBuilder> ChessBoardBuilder::buildRow(int row_number)
@@ -146,35 +186,35 @@ std::unique_ptr<HtmlTagBuilder> ChessBoardBuilder::buildRow(int row_number)
     thTagBldr->addTagContents(std::to_string(row_number));
     
     auto tdTagBldr1 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr1->setClassTag("td", square_colour1);
+    tdTagBldr1->setClassTag("td", getSquareColour(row_number, square_numbers[0]));
     tdTagBldr1->addTagContents(_board_map[square_numbers[0]]);
     
     auto tdTagBldr2 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr2->setClassTag("td", square_colour2);
+    tdTagBldr2->setClassTag("td", getSquareColour(row_number, square_numbers[1]));
     tdTagBldr2->addTagContents(_board_map[square_numbers[1]]);
     
     auto tdTagBldr3 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr3->setClassTag("td", square_colour1);
+    tdTagBldr3->setClassTag("td", getSquareColour(row_number, square_numbers[2]));
     tdTagBldr3->addTagContents(_board_map[square_numbers[2]]);
     
     auto tdTagBldr4 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr4->setClassTag("td", square_colour2);
+    tdTagBldr4->setClassTag("td", getSquareColour(row_number, square_numbers[3]));
     tdTagBldr4->addTagContents(_board_map[square_numbers[3]]);
     
     auto tdTagBldr5 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr5->setClassTag("td", square_colour1);
+    tdTagBldr5->setClassTag("td", getSquareColour(row_number, square_numbers[4]));
     tdTagBldr5->addTagContents(_board_map[square_numbers[4]]);
     
     auto tdTagBldr6 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr6->setClassTag("td", square_colour2);
+    tdTagBldr6->setClassTag("td", getSquareColour(row_number, square_numbers[5]));
     tdTagBldr6->addTagContents(_board_map[square_numbers[5]]);
     
     auto tdTagBldr7 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr7->setClassTag("td", square_colour1);
+    tdTagBldr7->setClassTag("td", getSquareColour(row_number, square_numbers[6]));
     tdTagBldr7->addTagContents(_board_map[square_numbers[6]]);
     
     auto tdTagBldr8 {std::make_unique<HtmlTagBuilder>()};
-    tdTagBldr8->setClassTag("td", square_colour2);
+    tdTagBldr8->setClassTag("td", getSquareColour(row_number, square_numbers[7]));
     tdTagBldr8->addTagContents(_board_map[square_numbers[7]]);
     
     trTagBldr->addEmbeddedTag(std::move(thTagBldr));
@@ -212,7 +252,8 @@ void ChessBoardBuilder::createBoard()
     styleTagBldr->addTagContents(".chess-board td { width: 1.5em; height: 1.5em; text-align: center; font-size: 32px; line-height: 0;}");
     styleTagBldr->addTagContents(".chess-board .light { background: #eee; }");
     styleTagBldr->addTagContents(".chess-board .dark { background: #aaa; }");
-    styleTagBldr->addTagContents(".chess-board .legal_moves { background: #fffdd0; }");
+    styleTagBldr->addTagContents(".chess-board .legal_moves_light { background: #FFFDD0; }");
+    styleTagBldr->addTagContents(".chess-board .legal_moves_dark { background: #F0E68C; }");
     headTagBldr->addEmbeddedTag(std::move(titleTagBldr));
     headTagBldr->addEmbeddedTag(std::move(styleTagBldr));
 

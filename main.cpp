@@ -78,7 +78,7 @@ int main()
     boardBldr.setPiece(blackPawn1.get());
     boardBldr.setPiece(blackPawn2.get());
     boardBldr.setPiece(blackPawn3.get());
-    boardBldr.setPiece(blackPawn4.get());
+    boardBldr.setPiece(blackPawn4.get(), true);
     boardBldr.setPiece(blackPawn5.get());
     boardBldr.setPiece(blackPawn6.get());
     boardBldr.setPiece(blackPawn7.get());

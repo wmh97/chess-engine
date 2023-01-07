@@ -5,6 +5,7 @@
 #include <memory>
 
 class IPiece;
+class PiecesContainer;
 
 class IPieceFactory
 {
@@ -24,7 +25,7 @@ public:
         white
     };
     virtual ~IPieceFactory() = default;
-    std::unique_ptr<IPiece> makePiece(PieceType piece_type, int position);
+    virtual std::shared_ptr<IPiece> makePiece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType piece_type, IPieceFactory::PieceColour colour, int position) = 0;
 };
 
 class IPiece
