@@ -75,6 +75,6 @@ void PiecesContainer::notifyOfPieceAdded()
 {
     for (const auto& p : _all_pieces)
     {
-        p->calculateLegalMoves();
+        p->update();
     }
 }

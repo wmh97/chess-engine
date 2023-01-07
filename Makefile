@@ -9,6 +9,7 @@ CPPFLAGS = -Wall \
 SOURCES = main.cpp \
           chess_pieces/PieceMoves.cpp \
 		  chess_pieces/PiecesContainer.cpp \
+		  chess_pieces/Piece.cpp \
 		  chess_pieces/Rook.cpp \
           chess_board/HtmlTagBuilder.cpp \
 		  chess_board/ChessBoardBuilder.cpp

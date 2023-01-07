@@ -86,7 +86,7 @@ void ChessBoardBuilder::setPiece(IPiece* piece, bool show_legal_moves)
 
     if (show_legal_moves)
     {
-        const auto legal_moves {piece->legalMoves()};
+        auto legal_moves {piece->legalMoves()};
         _legal_moves.insert(std::end(_legal_moves), std::begin(legal_moves), std::end(legal_moves));
     }
 }
