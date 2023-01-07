@@ -36,6 +36,9 @@ private:
     std::map<int, std::string> _board_map {};
     std::string _board_html {};
 
+    std::vector<int> _legal_moves {};
+
+    std::string getSquareColour(int row_number, int position) const;
     std::unique_ptr<HtmlTagBuilder> buildRow(int row_number);
 };
 
