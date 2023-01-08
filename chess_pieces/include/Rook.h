@@ -6,7 +6,7 @@
 
 #include <memory>
 
-class Rook : public Piece
+class Rook : virtual public Piece
 {
 public:
     Rook(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);

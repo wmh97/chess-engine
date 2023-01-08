@@ -7,7 +7,7 @@
 
 #include <memory>
 
-class Queen : public Piece
+class Queen : public Rook, public Bishop
 {
 public:
     Queen(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);
@@ -15,7 +15,8 @@ public:
     std::vector<int> legalMoves() const override;
 private:
     std::shared_ptr<PiecesContainer> _container;
-    std::vector<int> _legal_moves {};
+
+    IPieceFactory::PieceType _type;
 
     void calculateLegalMoves();
     std::size_t checkForBlockingPieces(std::size_t start_index);

@@ -12,7 +12,7 @@ public:
     Piece(IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position);
     void move(int position) override;
     int position() const override;
-    IPieceFactory::PieceType type() const override;
+    virtual IPieceFactory::PieceType type() const override;
     IPieceFactory::PieceColour colour() const override;
     
     virtual void update() override = 0;

@@ -6,7 +6,7 @@
 
 #include <memory>
 
-class Bishop : public Piece
+class Bishop : virtual public Piece
 {
 public:
     Bishop(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);
