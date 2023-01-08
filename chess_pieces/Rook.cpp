@@ -16,6 +16,11 @@ std::size_t Rook::checkForBlockingPieces(std::size_t start_index)
         {
             if (_legal_moves[i] == piece->position())
             {
+                if (piece->colour() != Piece::colour())
+                {
+                    _legal_moves.resize(i+1);
+                    return i+1;
+                }
                 _legal_moves.resize(i);
                 return i;
             }

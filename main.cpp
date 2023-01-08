@@ -47,7 +47,6 @@ int main()
     // auto blackPawn7 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 15);
     // auto blackPawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 16);
 
-
     auto whiteRook1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::white, 57);
     // auto whiteRook2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::white, 64);
     auto whiteKnight1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::white, 58);
@@ -66,7 +65,6 @@ int main()
     // auto whitePawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 56);
 
     whiteQueen->move(61);
-    // piecesContainer->notifyPiecesOfUpdate();
 
     ChessBoardBuilder boardBldr {};
 

@@ -18,11 +18,6 @@ void Piece::move(int position)
     // ... TODO
 }
 
-PiecesContainer* Piece::container() const
-{
-    return _container.get();
-}
-
 int Piece::position() const
 {
     return _position;
@@ -36,4 +31,9 @@ IPieceFactory::PieceType Piece::type() const
 IPieceFactory::PieceColour Piece::colour() const
 {
     return _colour;
+}
+
+PiecesContainer* Piece::container() const
+{
+    return _container.get();
 }
