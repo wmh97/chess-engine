@@ -25,6 +25,8 @@ int main()
         legal_moves[i][PieceMoves::MoveDirections::knight] = PieceMoves::calculateKnightLegalMoves(i);
         legal_moves[i][PieceMoves::MoveDirections::black_pawn] = PieceMoves::calculateBlackPawnLegalMoves(i);
         legal_moves[i][PieceMoves::MoveDirections::white_pawn] = PieceMoves::calculateWhitePawnLegalMoves(i);
+        legal_moves[i][PieceMoves::MoveDirections::black_pawn_start] = PieceMoves::calculateBlackPawnLegalStartMoves(i);
+        legal_moves[i][PieceMoves::MoveDirections::white_pawn_start] = PieceMoves::calculateWhitePawnLegalStartMoves(i);
         legal_moves[i][PieceMoves::MoveDirections::king] = PieceMoves::calculateKingLegalMoves(i);
     }
 
@@ -65,14 +67,18 @@ int main()
     auto whitePawn7 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 55);
     auto whitePawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 56);
 
-    // whiteQueen->move(61);
-    // blackRook1->move(57);
-
     ChessBoardBuilder boardBldr {};
 
     for (const auto& piece : piecesContainer->allPieces())
     {
-        boardBldr.setPiece(piece.get(), true);
+        if (piece->type() == IPieceFactory::PieceType::knight)
+        {
+            boardBldr.setPiece(piece.get(), true);
+        }
+        else
+        {
+            boardBldr.setPiece(piece.get());
+        }
     }
 
     // boardBldr.setPiece(blackRook1.get(), true);

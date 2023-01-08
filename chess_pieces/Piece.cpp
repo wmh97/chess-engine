@@ -13,10 +13,10 @@ Piece::Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceTyp
 
 void Piece::move(int position)
 {
-    // checks
+    // checks    
     auto legal_moves {legalMoves()};
     if (std::find(std::begin(legal_moves), std::end(legal_moves), position) != std::end(legal_moves))
-    {
+    {   
         _position = position;
         _container->notifyPiecesOfUpdate(this);
         // ... TODO

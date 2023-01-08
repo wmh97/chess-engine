@@ -3,6 +3,7 @@
 
 #include "Piece.h"
 #include "PiecesContainer.h"
+#include "PawnFirstMove.h"
 
 #include <memory>
 
@@ -13,6 +14,8 @@ public:
     void update() override;
     std::vector<int> legalMoves() const override;
 private:
+    std::unique_ptr<IPieceState> _state {std::make_unique<PawnFirstMove>()};
+
     std::vector<int> _legal_moves {};
 
     void calculateLegalMoves();
