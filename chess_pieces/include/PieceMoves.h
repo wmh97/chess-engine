@@ -42,9 +42,11 @@ namespace PieceMoves
     extern std::vector<int> calculateLegalMovesRight(int position) noexcept;
 
     extern std::vector<int> calculateKnightLegalMoves(int position) noexcept;
+    
     extern std::vector<int> calculateBlackPawnLegalMoves(int position) noexcept;
-
+    extern std::vector<int> calculateBlackPawnLegalStartMoves(int position) noexcept;
     extern std::vector<int> calculateWhitePawnLegalMoves(int position) noexcept;
+    extern std::vector<int> calculateWhitePawnLegalStartMoves(int position) noexcept;
 
     extern std::vector<int> calculateKingLegalMoves(int position) noexcept;
 

@@ -3,6 +3,7 @@ CXX = g++
 CPPFLAGS = -Wall \
            -Ichess_board/include \
 		   -Ichess_pieces/include \
+		   -Ichess_pieces/piece_states/include \
 		   -g \
 		   -std=c++2a
 
@@ -16,6 +17,7 @@ SOURCES = main.cpp \
 		  chess_pieces/Queen.cpp \
 		  chess_pieces/King.cpp \
 		  chess_pieces/Pawn.cpp \
+		  chess_pieces/piece_states/PawnFirstMove.cpp \
           chess_board/HtmlTagBuilder.cpp \
 		  chess_board/ChessBoardBuilder.cpp
 
@@ -28,7 +30,7 @@ all: pre_build engine.exe
 
 pre_build:
 	if not exist build\chess_board mkdir build\chess_board
-	if not exist build\chess_pieces mkdir build\chess_pieces
+	if not exist build\chess_pieces\piece_states mkdir build\chess_pieces\piece_states
 	if not exist run mkdir run
 
 engine.exe: $(OBJECTS)

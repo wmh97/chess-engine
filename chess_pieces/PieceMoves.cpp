@@ -201,6 +201,18 @@ std::vector<int> PieceMoves::calculateBlackPawnLegalMoves(int position) noexcept
     return legal_moves;
 }
 
+std::vector<int> PieceMoves::calculateBlackPawnLegalStartMoves(int position) noexcept
+{
+    std::vector<int> legal_moves {};
+    if (position >= 9 && position <= 16) // black pawn start pos.
+    {
+        auto standard_legal_moves {calculateBlackPawnLegalMoves(position)};
+        legal_moves.insert(std::end(legal_moves), std::begin(standard_legal_moves), std::end(standard_legal_moves));
+        legal_moves.insert(std::begin(legal_moves)+1, position+16);        
+    }
+    return legal_moves;
+}
+
 std::vector<int> PieceMoves::calculateWhitePawnLegalMoves(int position) noexcept
 {
     std::vector<int> legal_moves {};
@@ -209,6 +221,18 @@ std::vector<int> PieceMoves::calculateWhitePawnLegalMoves(int position) noexcept
     if (calculateSquaresToLeft(position) >= 1) legal_moves.push_back(position-9);
     if (calculateSquaresToRight(position) >= 1) legal_moves.push_back(position-7);
     return legal_moves;   
+}
+
+std::vector<int> PieceMoves::calculateWhitePawnLegalStartMoves(int position) noexcept
+{
+    std::vector<int> legal_moves {};
+    if (position >= 9 && position <= 16) // black pawn start pos.
+    {
+        auto standard_legal_moves {calculateWhitePawnLegalMoves(position)};
+        legal_moves.insert(std::end(legal_moves), std::begin(standard_legal_moves), std::end(standard_legal_moves));
+        legal_moves.insert(std::begin(legal_moves)+1, position-16);        
+    }
+    return legal_moves;
 }
 
 std::vector<int> PieceMoves::calculateKingLegalMoves(int position) noexcept
