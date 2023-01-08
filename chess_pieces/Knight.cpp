@@ -15,14 +15,11 @@ std::size_t Knight::checkForBlockingPieces(std::size_t start_index)
         for (const auto& piece : Piece::container()->allPieces())
         {
             if (_legal_moves[i] == piece->position())
-            {
-                if (piece->colour() != Piece::colour())
+            {                
+                if (piece->colour() == Piece::colour())
                 {
-                    _legal_moves.resize(i+1);
-                    return i+1;
+                    _legal_moves.erase(std::begin(_legal_moves)+i);
                 }
-                _legal_moves.resize(i);
-                return i;
             }
         }
     }

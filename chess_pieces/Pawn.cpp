@@ -10,8 +10,6 @@ Pawn::Pawn(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::Pie
 
 void Pawn::calculateLegalMoves()
 {
-    _legal_moves.clear(); // needed?
-
     auto update = _state->updateState(Piece::container(), Piece::type(), Piece::colour(), Piece::position());
     _legal_moves = update.first;
     if (update.second != nullptr)

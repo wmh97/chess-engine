@@ -1,5 +1,7 @@
 #include "PieceMoves.h"
 
+#include <iostream>
+
 using namespace PieceMoves;
 
 int PieceMoves::calculateSquaresAbove(int position) noexcept
@@ -226,7 +228,7 @@ std::vector<int> PieceMoves::calculateWhitePawnLegalMoves(int position) noexcept
 std::vector<int> PieceMoves::calculateWhitePawnLegalStartMoves(int position) noexcept
 {
     std::vector<int> legal_moves {};
-    if (position >= 9 && position <= 16) // black pawn start pos.
+    if (position >= 49 && position <= 56) // black pawn start pos.
     {
         auto standard_legal_moves {calculateWhitePawnLegalMoves(position)};
         legal_moves.insert(std::end(legal_moves), std::begin(standard_legal_moves), std::end(standard_legal_moves));

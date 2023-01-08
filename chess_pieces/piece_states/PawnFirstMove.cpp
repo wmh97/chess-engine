@@ -1,5 +1,7 @@
 #include "PawnFirstMove.h"
 
+#include <iostream>
+
 std::pair<std::vector<int>, std::unique_ptr<IPieceState>> PawnFirstMove::updateState(PiecesContainer* container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position)
 {
     return std::pair<std::vector<int>, std::unique_ptr<IPieceState>> {calculateLegalMoves(container, type, colour, position), nullptr}; // should return next pawn state - TODO
@@ -7,7 +9,6 @@ std::pair<std::vector<int>, std::unique_ptr<IPieceState>> PawnFirstMove::updateS
 
 std::vector<int> PawnFirstMove::calculateLegalMoves(PiecesContainer* container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position)
 {
-    // need to make legal moves more easily accessible
     std::vector<int> legal_moves {};
     std::size_t start {legal_moves.size()};
 
