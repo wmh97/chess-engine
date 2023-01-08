@@ -30,13 +30,3 @@ IPieceFactory::PieceColour Piece::colour() const
 {
     return _colour;
 }
-
-// void Piece::update()
-// {
-
-// }
-
-// std::vector<int> Piece::legalMoves() const
-// {
-//     return std::vector<int>{};
-// }
