@@ -48,14 +48,14 @@ int main()
     // auto blackPawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 16);
 
 
-    // auto whiteRook1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::white, 57);
+    auto whiteRook1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::white, 57);
     // auto whiteRook2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::rook, IPieceFactory::PieceColour::white, 64);
-    // auto whiteKnight1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::white, 58);
+    auto whiteKnight1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::white, 58);
     // auto whiteKnight2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::white, 63);
-    // auto whiteBishop1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::white, 59);
+    auto whiteBishop1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::white, 59);
     // auto whiteBishop2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::white, 62);
     // auto whiteKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::white, 61);
-    // auto whiteQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::white, 60);
+    auto whiteQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::white, 60);
     // auto whitePawn1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 49);
     // auto whitePawn2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 50);
     // auto whitePawn3 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 51);
@@ -65,6 +65,8 @@ int main()
     // auto whitePawn7 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 55);
     // auto whitePawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 56);
 
+    whiteQueen->move(61);
+    // piecesContainer->notifyPiecesOfUpdate();
 
     ChessBoardBuilder boardBldr {};
 
@@ -85,14 +87,14 @@ int main()
     // boardBldr.setPiece(blackPawn7.get());
     // boardBldr.setPiece(blackPawn8.get());
 
-    // boardBldr.setPiece(whiteRook1.get());
+    boardBldr.setPiece(whiteRook1.get(), true);
     // boardBldr.setPiece(whiteRook2.get());
-    // boardBldr.setPiece(whiteKnight1.get());
+    boardBldr.setPiece(whiteKnight1.get(), true);
     // boardBldr.setPiece(whiteKnight2.get());
-    // boardBldr.setPiece(whiteBishop1.get());
+    boardBldr.setPiece(whiteBishop1.get(), true);
     // boardBldr.setPiece(whiteBishop2.get());
     // boardBldr.setPiece(whiteKing.get());
-    // boardBldr.setPiece(whiteQueen.get());
+    boardBldr.setPiece(whiteQueen.get(), true);
     // boardBldr.setPiece(whitePawn1.get());
     // boardBldr.setPiece(whitePawn2.get());
     // boardBldr.setPiece(whitePawn3.get());

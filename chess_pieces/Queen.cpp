@@ -3,7 +3,7 @@
 #include <iostream>
 
 Queen::Queen(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position) :
-    Piece{IPieceFactory::PieceType::queen, colour, position},
+    Piece{pieces_container, IPieceFactory::PieceType::queen, colour, position},
     Rook{pieces_container, colour, position},
     Bishop{pieces_container, colour, position}
 {

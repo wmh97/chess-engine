@@ -3,8 +3,7 @@
 #include <iostream>
 
 Bishop::Bishop(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position) :
-    Piece{IPieceFactory::PieceType::bishop, colour, position},
-    _container{pieces_container}
+    Piece{pieces_container, IPieceFactory::PieceType::bishop, colour, position}
 {
     calculateLegalMoves();
 }
@@ -13,7 +12,7 @@ std::size_t Bishop::checkForBlockingPieces(std::size_t start_index)
 {
     for (std::size_t i {start_index}; i<_legal_moves.size(); i++)
     {
-        for (const auto& piece : _container->allPieces())
+        for (const auto& piece : Piece::container()->allPieces())
         {
             if (_legal_moves[i] == piece->position())
             {
@@ -33,29 +32,29 @@ void Bishop::calculateLegalMoves()
 
     _legal_moves.insert(
         std::end(_legal_moves), 
-        std::begin(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_up]), 
-        std::end(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_up])
+        std::begin(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_up]), 
+        std::end(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_up])
     );
     start = checkForBlockingPieces(start);
 
     _legal_moves.insert(
         std::end(_legal_moves), 
-        std::begin(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_down]), 
-        std::end(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_down])
+        std::begin(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_down]), 
+        std::end(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::left_down])
     );
     start = checkForBlockingPieces(start);
 
     _legal_moves.insert(
         std::end(_legal_moves), 
-        std::begin(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_up]), 
-        std::end(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_up])
+        std::begin(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_up]), 
+        std::end(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_up])
     );
     start = checkForBlockingPieces(start);
 
     _legal_moves.insert(
         std::end(_legal_moves), 
-        std::begin(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_down]), 
-        std::end(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_down])
+        std::begin(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_down]), 
+        std::end(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::right_down])
     );
     start = checkForBlockingPieces(start);
 }

@@ -9,8 +9,10 @@
 class Piece : public IPiece
 {
 public:
-    Piece(IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position);
+    Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position);
     void move(int position) override;
+
+    PiecesContainer* container() const;
     int position() const override;
     virtual IPieceFactory::PieceType type() const override;
     IPieceFactory::PieceColour colour() const override;
@@ -18,6 +20,7 @@ public:
     virtual void update() override = 0;
     virtual std::vector<int> legalMoves() const override = 0;
 private:  
+    std::shared_ptr<PiecesContainer> _container;
     const IPieceFactory::PieceType _type;
     IPieceFactory::PieceColour _colour;
     int _position;

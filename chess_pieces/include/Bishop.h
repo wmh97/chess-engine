@@ -13,7 +13,6 @@ public:
     void update() override;
     std::vector<int> legalMoves() const override;
 private:
-    std::shared_ptr<PiecesContainer> _container;
     std::vector<int> _legal_moves {};
 
     void calculateLegalMoves();

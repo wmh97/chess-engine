@@ -14,8 +14,6 @@ public:
     void update() override;
     std::vector<int> legalMoves() const override;
 private:
-    std::shared_ptr<PiecesContainer> _container;
-
     IPieceFactory::PieceType _type;
 
     void calculateLegalMoves();

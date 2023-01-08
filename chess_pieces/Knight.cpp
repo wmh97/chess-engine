@@ -3,8 +3,7 @@
 #include <iostream>
 
 Knight::Knight(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position) :
-    Piece{IPieceFactory::PieceType::knight, colour, position},
-    _container{pieces_container}
+    Piece{pieces_container, IPieceFactory::PieceType::knight, colour, position}
 {
     calculateLegalMoves();
 }
@@ -13,7 +12,7 @@ std::size_t Knight::checkForBlockingPieces(std::size_t start_index)
 {
     for (std::size_t i {start_index}; i<_legal_moves.size(); i++)
     {
-        for (const auto& piece : _container->allPieces())
+        for (const auto& piece : Piece::container()->allPieces())
         {
             if (_legal_moves[i] == piece->position())
             {
@@ -33,8 +32,8 @@ void Knight::calculateLegalMoves()
 
     _legal_moves.insert(
         std::end(_legal_moves), 
-        std::begin(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::knight]), 
-        std::end(_container->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::knight])
+        std::begin(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::knight]), 
+        std::end(Piece::container()->legalMoves()->legal_moves[Piece::position()][PieceMoves::MoveDirections::knight])
     );
     start = checkForBlockingPieces(start);
 }

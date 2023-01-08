@@ -45,6 +45,8 @@ namespace PieceMoves
 
     extern std::vector<int> calculateWhitePawnLegalMoves(int position) noexcept;
 
+    extern std::vector<int> calculateKingLegalMoves(int position) noexcept;
+
     // refactor into class
     struct LegalMovesMap
     {
