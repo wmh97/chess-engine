@@ -1,15 +1,15 @@
-#ifndef ROOK_H
-#define ROOK_H
+#ifndef KNIGHT_H
+#define KNIGHT_H
 
 #include "Piece.h"
 #include "PiecesContainer.h"
 
 #include <memory>
 
-class Rook : virtual public Piece
+class Knight : public Piece
 {
 public:
-    Rook(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);
+    Knight(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);
     void update() override;
     std::vector<int> legalMoves() const override;
 private:

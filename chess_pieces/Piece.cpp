@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-Piece::Piece(IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position) :
+Piece::Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position) :
+    _container{container},
     _type{type},
     _colour{colour},
     _position{position}
@@ -13,7 +14,13 @@ void Piece::move(int position)
 {
     // checks
     _position = position;
+    _container->notifyPiecesOfUpdate();
     // ... TODO
+}
+
+PiecesContainer* Piece::container() const
+{
+    return _container.get();
 }
 
 int Piece::position() const
@@ -30,13 +37,3 @@ IPieceFactory::PieceColour Piece::colour() const
 {
     return _colour;
 }
-
-// void Piece::update()
-// {
-
-// }
-
-// std::vector<int> Piece::legalMoves() const
-// {
-//     return std::vector<int>{};
-// }

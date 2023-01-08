@@ -1,5 +1,8 @@
 #include "PiecesContainer.h"
 #include "Rook.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "Queen.h"
 
 PiecesContainer::PiecesContainer(std::unique_ptr<PieceMoves::LegalMovesMap> legal_moves):
     _legal_moves{std::move(legal_moves)}
@@ -23,23 +26,23 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
         case(PieceType::knight):
         {
-            auto piece {std::make_shared<Rook>(container, colour, position)};
+            auto piece {std::make_shared<Knight>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
         case(PieceType::bishop):
         {
-            auto piece {std::make_shared<Rook>(container, colour, position)};
+            auto piece {std::make_shared<Bishop>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
@@ -47,15 +50,15 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
         case(PieceType::queen):
         {
-            auto piece {std::make_shared<Rook>(container, colour, position)};
+            auto piece {std::make_shared<Queen>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
@@ -63,7 +66,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyOfPieceAdded();
+            notifyPiecesOfUpdate();
             return piece;
             break;
         }
@@ -71,7 +74,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
     return nullptr;
 }
 
-void PiecesContainer::notifyOfPieceAdded()
+void PiecesContainer::notifyPiecesOfUpdate()
 {
     for (const auto& p : _all_pieces)
     {
