@@ -37,7 +37,7 @@ int main()
     auto blackBishop1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::black, 3);
     // auto blackBishop2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::black, 6);
     // auto blackKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::black, 4);
-    // auto blackQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::black, 5);
+    auto blackQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::black, 5);
     // auto blackPawn1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 9);
     // auto blackPawn2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 10);
     // auto blackPawn3 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 11);
@@ -75,7 +75,7 @@ int main()
     boardBldr.setPiece(blackBishop1.get(), true);
     // boardBldr.setPiece(blackBishop2.get());
     // boardBldr.setPiece(blackKing.get());
-    // boardBldr.setPiece(blackQueen.get());
+    boardBldr.setPiece(blackQueen.get(), true);
     // boardBldr.setPiece(blackPawn1.get());
     // boardBldr.setPiece(blackPawn2.get());
     // boardBldr.setPiece(blackPawn3.get());
