@@ -26,7 +26,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -34,7 +34,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Knight>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -42,7 +42,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Bishop>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -50,7 +50,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -58,7 +58,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Queen>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -66,7 +66,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         {
             auto piece {std::make_shared<Rook>(container, colour, position)};
             _all_pieces.push_back(piece);
-            notifyPiecesOfUpdate();
+            notifyPiecesOfUpdate(piece.get());
             return piece;
             break;
         }
@@ -74,10 +74,15 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
     return nullptr;
 }
 
-void PiecesContainer::notifyPiecesOfUpdate()
+void PiecesContainer::notifyPiecesOfUpdate(IPiece* source)
 {
-    for (const auto& p : _all_pieces)
+    for (std::size_t i {0}; i<_all_pieces.size(); i++)
     {
+        auto p {_all_pieces[i]};
+        if (p->position() == source->position() && p->colour() != source->colour() && p.get() != source) // take
+        {
+            _all_pieces.erase(std::begin(_all_pieces)+i);
+        }
         p->update();
     }
 }

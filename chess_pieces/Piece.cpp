@@ -14,7 +14,7 @@ void Piece::move(int position)
 {
     // checks
     _position = position;
-    _container->notifyPiecesOfUpdate();
+    _container->notifyPiecesOfUpdate(this);
     // ... TODO
 }
 

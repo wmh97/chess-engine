@@ -65,17 +65,23 @@ int main()
     // auto whitePawn8 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 56);
 
     whiteQueen->move(61);
+    blackRook1->move(57);
 
     ChessBoardBuilder boardBldr {};
 
-    boardBldr.setPiece(blackRook1.get(), true);
+    for (const auto& piece : piecesContainer->allPieces())
+    {
+        boardBldr.setPiece(piece.get(), true);
+    }
+
+    // boardBldr.setPiece(blackRook1.get(), true);
     // boardBldr.setPiece(blackRook2.get(), true);
-    boardBldr.setPiece(blackKnight1.get(), true);
+    // boardBldr.setPiece(blackKnight1.get(), true);
     // boardBldr.setPiece(blackKnight2.get());
-    boardBldr.setPiece(blackBishop1.get(), true);
+    // boardBldr.setPiece(blackBishop1.get(), true);
     // boardBldr.setPiece(blackBishop2.get());
     // boardBldr.setPiece(blackKing.get());
-    boardBldr.setPiece(blackQueen.get(), true);
+    // boardBldr.setPiece(blackQueen.get(), true);
     // boardBldr.setPiece(blackPawn1.get());
     // boardBldr.setPiece(blackPawn2.get());
     // boardBldr.setPiece(blackPawn3.get());
@@ -85,14 +91,14 @@ int main()
     // boardBldr.setPiece(blackPawn7.get());
     // boardBldr.setPiece(blackPawn8.get());
 
-    boardBldr.setPiece(whiteRook1.get(), true);
+    // boardBldr.setPiece(whiteRook1.get(), true);
     // boardBldr.setPiece(whiteRook2.get());
-    boardBldr.setPiece(whiteKnight1.get(), true);
+    // boardBldr.setPiece(whiteKnight1.get(), true);
     // boardBldr.setPiece(whiteKnight2.get());
-    boardBldr.setPiece(whiteBishop1.get(), true);
+    // boardBldr.setPiece(whiteBishop1.get(), true);
     // boardBldr.setPiece(whiteBishop2.get());
     // boardBldr.setPiece(whiteKing.get());
-    boardBldr.setPiece(whiteQueen.get(), true);
+    // boardBldr.setPiece(whiteQueen.get(), true);
     // boardBldr.setPiece(whitePawn1.get());
     // boardBldr.setPiece(whitePawn2.get());
     // boardBldr.setPiece(whitePawn3.get());

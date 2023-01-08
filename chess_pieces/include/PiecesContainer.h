@@ -13,7 +13,7 @@ public:
     PiecesContainer(std::unique_ptr<PieceMoves::LegalMovesMap> legal_moves);
 
     std::shared_ptr<IPiece> makePiece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType piece_type, IPieceFactory::PieceColour colour, int position) override;
-    void notifyPiecesOfUpdate();
+    void notifyPiecesOfUpdate(IPiece* source);
 
     std::vector<std::shared_ptr<IPiece>> allPieces() const;
     PieceMoves::LegalMovesMap* legalMoves() const;
