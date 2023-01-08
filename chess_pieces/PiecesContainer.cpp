@@ -4,6 +4,7 @@
 #include "Bishop.h"
 #include "Queen.h"
 #include "King.h"
+#include "Pawn.h"
 
 PiecesContainer::PiecesContainer(std::unique_ptr<PieceMoves::LegalMovesMap> legal_moves):
     _legal_moves{std::move(legal_moves)}
@@ -65,7 +66,7 @@ std::shared_ptr<IPiece> PiecesContainer::makePiece(std::shared_ptr<PiecesContain
         }
         case(PieceType::pawn):
         {
-            auto piece {std::make_shared<Rook>(container, colour, position)};
+            auto piece {std::make_shared<Pawn>(container, colour, position)};
             _all_pieces.push_back(piece);
             notifyPiecesOfUpdate(piece.get());
             return piece;

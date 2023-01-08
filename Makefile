@@ -15,6 +15,7 @@ SOURCES = main.cpp \
 		  chess_pieces/Bishop.cpp \
 		  chess_pieces/Queen.cpp \
 		  chess_pieces/King.cpp \
+		  chess_pieces/Pawn.cpp \
           chess_board/HtmlTagBuilder.cpp \
 		  chess_board/ChessBoardBuilder.cpp
 
