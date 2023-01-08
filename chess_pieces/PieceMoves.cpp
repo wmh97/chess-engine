@@ -210,3 +210,33 @@ std::vector<int> PieceMoves::calculateWhitePawnLegalMoves(int position) noexcept
     if (calculateSquaresToRight(position) >= 1) legal_moves.push_back(position-7);
     return legal_moves;   
 }
+
+std::vector<int> PieceMoves::calculateKingLegalMoves(int position) noexcept
+{
+    std::vector<int> legal_moves {};
+
+    int squares_to_left {calculateSquaresToLeft(position)};
+    int squares_to_right {calculateSquaresToRight(position)};
+    int squares_above {calculateSquaresAbove(position)};
+    int squares_below {calculateSquaresBelow(position)};
+    
+    // up
+    if (squares_above >= 1) legal_moves.push_back(position-8);
+    // down
+    if (squares_below >= 1) legal_moves.push_back(position+8);
+    // left
+    if (squares_to_left >= 1) legal_moves.push_back(position-1);
+    // right
+    if (squares_to_right >= 1) legal_moves.push_back(position+1);
+
+    // left up: -9
+    if (squares_to_left >= 1 && squares_above >= 1) legal_moves.push_back(position-9);
+    // left down: +7
+    if (squares_to_left >= 1 && squares_below >= 1) legal_moves.push_back(position+7);
+    // right up: -7
+    if (squares_to_right >= 1 && squares_above >= 1) legal_moves.push_back(position-7);
+    // right down: +9
+    if (squares_to_right >= 1 && squares_below >= 1) legal_moves.push_back(position+9);
+
+    return legal_moves;
+}

@@ -25,6 +25,7 @@ int main()
         legal_moves[i][PieceMoves::MoveDirections::knight] = PieceMoves::calculateKnightLegalMoves(i);
         legal_moves[i][PieceMoves::MoveDirections::black_pawn] = PieceMoves::calculateBlackPawnLegalMoves(i);
         legal_moves[i][PieceMoves::MoveDirections::white_pawn] = PieceMoves::calculateWhitePawnLegalMoves(i);
+        legal_moves[i][PieceMoves::MoveDirections::king] = PieceMoves::calculateKingLegalMoves(i);
     }
 
     auto legalMoves {std::make_unique<PieceMoves::LegalMovesMap>(legal_moves)};
@@ -36,7 +37,7 @@ int main()
     // auto blackKnight2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::black, 7);
     auto blackBishop1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::black, 3);
     // auto blackBishop2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::black, 6);
-    // auto blackKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::black, 4);
+    auto blackKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::black, 4);
     auto blackQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::black, 5);
     // auto blackPawn1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 9);
     // auto blackPawn2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::black, 10);
@@ -53,7 +54,7 @@ int main()
     // auto whiteKnight2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::knight, IPieceFactory::PieceColour::white, 63);
     auto whiteBishop1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::white, 59);
     // auto whiteBishop2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::bishop, IPieceFactory::PieceColour::white, 62);
-    // auto whiteKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::white, 61);
+    auto whiteKing = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::king, IPieceFactory::PieceColour::white, 61);
     auto whiteQueen = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::queen, IPieceFactory::PieceColour::white, 60);
     // auto whitePawn1 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 49);
     // auto whitePawn2 = piecesContainer->makePiece(piecesContainer, IPieceFactory::PieceType::pawn, IPieceFactory::PieceColour::white, 50);

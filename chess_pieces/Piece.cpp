@@ -1,6 +1,7 @@
 #include "Piece.h"
 
 #include <iostream>
+#include <algorithm>
 
 Piece::Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position) :
     _container{container},
@@ -13,9 +14,13 @@ Piece::Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceTyp
 void Piece::move(int position)
 {
     // checks
-    _position = position;
-    _container->notifyPiecesOfUpdate(this);
-    // ... TODO
+    auto legal_moves {legalMoves()};
+    if (std::find(std::begin(legal_moves), std::end(legal_moves), position) != std::end(legal_moves))
+    {
+        _position = position;
+        _container->notifyPiecesOfUpdate(this);
+        // ... TODO
+    }
 }
 
 int Piece::position() const

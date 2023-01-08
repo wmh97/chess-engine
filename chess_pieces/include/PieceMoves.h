@@ -17,6 +17,7 @@ namespace PieceMoves
         right_up,
         right_down,
         knight,
+        king,
         black_pawn,
         white_pawn,
         black_pawn_start,
