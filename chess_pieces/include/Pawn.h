@@ -3,7 +3,6 @@
 
 #include "Piece.h"
 #include "PiecesContainer.h"
-#include "PawnFirstMove.h"
 
 #include <memory>
 
@@ -11,10 +10,11 @@ class Pawn : public Piece
 {
 public:
     Pawn(std::shared_ptr<PiecesContainer> pieces_container, IPieceFactory::PieceColour colour, int position);
+    void move(int position) override;
     void update() override;
     std::vector<int> legalMoves() const override;
 private:
-    std::unique_ptr<IPieceState> _state {std::make_unique<PawnFirstMove>()};
+    bool _first_move {true};
 
     std::vector<int> _legal_moves {};
 

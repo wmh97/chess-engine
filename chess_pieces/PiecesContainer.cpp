@@ -85,6 +85,9 @@ void PiecesContainer::notifyPiecesOfUpdate(IPiece* source)
         {
             _all_pieces.erase(std::begin(_all_pieces)+i);
         }
-        p->update();
+        if (p.get() != source)
+        {
+            p->update();
+        }
     }
 }

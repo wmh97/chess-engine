@@ -10,7 +10,7 @@ class Piece : public IPiece
 {
 public:
     Piece(std::shared_ptr<PiecesContainer> container, IPieceFactory::PieceType type, IPieceFactory::PieceColour colour, int position);
-    void move(int position) override;
+    virtual void move(int position) override;
     int position() const override;
     virtual IPieceFactory::PieceType type() const override;
     IPieceFactory::PieceColour colour() const override;
